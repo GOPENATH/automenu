@@ -1,0 +1,130 @@
+<style>
+
+
+
+.ui-content{
+	background-color: #000;
+	padding: -15px;
+	overflow: hidden;
+}
+#gridcontainer {
+	width:100%;
+	background-color: transparent;
+	margin: -3px;
+	border-radius: 7px;
+
+}
+
+#itemlists {
+	width:69%;
+	height:4.72in;
+	float:left;
+	background-color: transparent;
+	display:block;
+	margin: 5px;
+	border-radius: 3px;
+	position: relative;
+	overflow:auto;
+	overflow-x:hidden;
+	overflow-y:scroll; 
+    -webkit-overflow-scrolling: touch;
+    border-radius: 7px;
+	/*background: -webkit-gradient(linear, left top, right top, color-stop(63%,#000000), color-stop(100%,#45484d)); /* Chrome,Safari4+ */
+	/*background: -webkit-linear-gradient(left, #000000 63%,#45484d 100%); /* Chrome10+,Safari5.1+ */
+
+
+}
+
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(50,50,50,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(100,100,100,0.3); 
+}
+
+
+#checklist {
+	width:29%;
+	height:4.72in;
+	float:left;
+	background-color: rgba(255,255,255,0.1);
+
+	display: block;
+	margin: 5px;
+	margin-left: 0px;
+	border-radius: 3px;
+	overflow:auto;
+	overflow-x:hidden;
+	overflow-y:scroll; 
+    -webkit-overflow-scrolling: touch;
+    border-radius: 7px;
+    padding: 10px;
+
+
+}
+
+.grid_1 {
+	width: 33.3%;
+}
+
+.container_3 {
+}
+
+
+/** Css rules for scroller */
+body,ul,li {
+	padding:0;
+	margin:0;
+}
+
+
+#wrapper {
+	position:absolute; z-index:1;
+	top:4px; bottom:4px; left:0;
+	width:100%;
+	background:transparent;
+	overflow:auto;
+}
+
+#scroller {
+	position:absolute; z-index:1;
+/*	-webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	width:100%;
+	padding:0;
+}
+
+#scroller ul {
+	list-style:none;
+	padding:0;
+	margin:0;
+	width:100%;
+	text-align:left;
+}
+
+#scroller li {
+	padding:0 10px;
+	height:40px;
+	line-height:40px;
+	border-bottom:0px solid #ccc;
+	border-top:0px solid #fff;
+	background-color:transparent;
+	font-size:14px;
+}
+</style>

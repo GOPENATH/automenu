@@ -1,0 +1,82 @@
+<! DOCTYPE html>
+<html>
+<head>
+	<title> Menu </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- CSS -->
+
+
+	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" href="css/automenu.css" />
+    <link rel="stylesheet" href="css/jquery-mobile-fluid960.min.css" />
+		<link rel = "stylesheet" href = "css/default.css" />
+		<link rel = "stylesheet" media = "screen" href = "css/common.css" />
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/jquery.mobile-1.2.0.min.js"></script>
+</head>
+<body>
+<div data-role="page" id="initpage">
+	<div data-role="header" id="head" data-theme="b">
+		<div data-role="navbar" >
+		  <ul>
+			<li><a href="#">One</a></li>
+			<li><a href="#">Two</a></li>
+			<li><a href="#">Three</a></li>
+			<li><a href="#">One</a></li>
+			<li><a href="#">Two</a></li>
+		  </ul>
+	    </div><!-- /navbar -->
+	</div>
+		<div class = 'debug'></div>
+		<div class="ui-grid-a" id="gridcontainer">
+			<div id="itemlists" class="ui-block-a">
+			
+    			<fieldset class="container_3">
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 3</button></div>	
+       			</fieldset>
+       			<fieldset class="container_3">
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="e" data-icon="forward" data-iconpos="top">Item 3</button></div>	
+       			</fieldset>
+			</div>
+       			<script>
+       			$( '#initpage' ).live( 'pageinit',function(event){
+ 					 $('.container_3').css('margin-top','25px');
+				});
+       				
+       			</script>
+
+
+
+
+			<div id="checklist" class="ui-block-b">
+			</div>
+
+	</div>
+	<div data-role="footer" id="foot">
+		(c) clocker Inc. 2012
+	</div>
+</body>
+</html>

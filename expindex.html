@@ -1,0 +1,116 @@
+<! DOCTYPE html>
+<html>
+<head>
+	<title> Menu </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+		<link rel="stylesheet" href="css/green.css" />
+
+	<link rel="stylesheet" href="css/automenu.css" />
+    <link rel="stylesheet" href="css/jquery-mobile-fluid960.min.css" />
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/jquery.mobile-1.2.0.min.js"></script>
+	<!--
+	<script type="text/javascript" src="js/iscroll.js"></script> -->
+	<script>
+		$(document).on("mobileinit", function(){
+  			$.mobile.touchOverflowEnabled = true;
+		});
+</script>
+
+</head>
+<body>
+<div data-role="page" id="initpage">
+
+	<div data-role="header" id="head" data-theme="f" data-position="fixed">
+		<div data-role="navbar" > 
+		  <ul>
+			<li><a href="#">One</a></li>
+			<li><a href="#">Two</a></li>
+			<li><a href="#">Three</a></li>
+			<li><a href="#">One</a></li>
+			<li><a href="#">Two</a></li>
+		  </ul>
+	    </div><!-- /navbar -->
+
+	</div><!--header-->
+	<div data-role="content" data-theme="a">		
+		<div class="ui-grid-a" id="gridcontainer">	
+			<div id="itemlists" class="ui-block-a"> 
+    			<fieldset class="container_3">
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 3</button></div>	
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 1</button></div>
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 2</button></div>	  
+					<div class="grid_1" ><button type="submit" data-theme="a" data-icon="forward" data-iconpos="top" class="itembutton">Item 3</button></div>	
+       			</fieldset> 
+			</div>
+		
+<script>
+	$( '#initpage' ).live( 'pageinit',function(event){
+		 $('.container_3').css('margin-top','0');
+		 	$.event.special.tap.tapholdThreshold = 1000,
+        	$.event.special.swipe.durationThreshold = 999;
+			$( ".itembutton" ).on( "tap", function(event, ui) {
+
+  		  				 
+
+  						 $(this).attr('data-icon','check');   
+  						 $(this).parent().children().children().last().removeClass('ui-icon-forward').addClass('ui-icon-check');
+  						 $(this).attr('data-theme','e');
+  						 $(this).parent().removeClass('ui-btn-up-a').addClass('ui-btn-up-e');
+  						 $(this).parent().removeClass('ui-btn-hover-a').addClass('ui-btn-hover-e');
+ 	   					 $('#itemchecklist').append("<li><a href='#''><h3>Broken Bells</h3><p>nos</p><span class='ui-li-count'>1</span></a><a href='#'' data-rel='popup' data-position-to='window' data-transition='pop'>Purchase album</a></li>").listview('refresh');
+						
+  						    			 
+  						 jQuery.fn.outerHTML = function() {
+  							return jQuery('<div />').append(this.eq(0).clone()).html();
+						 };
+  	
+						 
+	
+						 	 
+
+			});
+			$( ".itembutton" ).on( "taphold", function(event, ui) {
+				alert('hi you ahve tapped hold');
+
+			});
+		});
+</script>
+
+
+
+
+
+
+			<div id="checklist" class="ui-block-b" data-theme="a">
+				<button type="submit" data-theme="b" data-inset="true" data-icon="forward" data-iconpos="top" id="itemcheckbutton">Item 3</button>
+				<ul data-role="listview" data-split-icon="delete"  data-inset="true" data-theme="f" data-split-theme="e" data-count-theme="b" id="itemchecklist">
+				</ul>
+			</div><!--checklist-->
+
+	</div><!--grid-container-->
+	</div> <!--content-->
+</body>
+</html>
