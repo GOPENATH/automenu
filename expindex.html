@@ -116,8 +116,16 @@
 		 		/** inject selected buttons into checklist container **/
 			 	/*Call AddItem Now*/
 			 	var itemid=_itembutton.attr('id');
-			 	$('#itemchecklist').append("<li id='remove-"+itemid+"'><a href='#''><h3>"+_itembutton.text()+"</h3><p>nos</p><span class='ui-li-count'>1</span></a><a href='#' data-rel='popup' data-position-to='window' data-transition='pop' class='removeitem' id='remove_remove-"+itemid+"'>Remove this...</a></li>").listview('refresh');
-						 	/*Event for removing*/
+			 	$('#itemchecklist').append("<li id='remove-"+itemid+"'><a href='#' class='counter' id='count_"+itemid+"'><h3>"+_itembutton.text()+"</h3><p>nos</p><span class='ui-li-count'>1</span></a><a href='#' data-rel='popup' data-position-to='window' data-transition='pop' class='removeitem' id='remove_remove-"+itemid+"'>Remove this...</a></li>").listview('refresh');
+				/*Event for counting*/
+				$('.counter').on("tap", function(event, ui){
+					var count = parseInt($(this).find('span').text(), 10);
+					$(this).find('span').text(++count);
+					$('#itemchecklist').listview('refresh');
+				});
+
+
+				/*Event for removing*/
 				$('.removeitem').on("tap", function(event, ui){
 					id = $(this).attr('id').split('-').pop();
 					removeItem(id);
