@@ -43,7 +43,10 @@
 		
 
 			<div id="checklist" class="ui-block-b" data-theme="a">
-				<button type="submit" data-theme="b" data-inset="true" data-icon="forward" data-iconpos="top" id="itemcheckbutton">Item 3</button>
+				<fieldset class="container_12">
+				<div class='grid_6'><button type="submit" data-theme="b" data-inset="true" data-icon="forward" data-iconpos="top" id="orderbutton">Order</button></div>
+				<div class='grid_6'><button type="submit" data-theme="b" data-inset="true" data-icon="forward" data-iconpos="top" id="resetbutton">Reset</button></div>
+				</fieldset>
 				<ul data-role="listview" data-split-icon="delete"  data-inset="true" data-theme="f" data-split-theme="e" data-count-theme="b" id="itemchecklist">
 				</ul>
 				<div id="err"></div>
@@ -61,16 +64,17 @@
 			 /**  Aax request for populating itemcontainer with items */
  			 $.ajax({
  			 	type: "GET",
- 			 	url: 'http://127.0.0.1:8000/itemlist/', // point this to json response generator
+ 			 	url: '/itemlist/', // point this to json response generator
 				dataType: 'json',
  			 	success: function(data){
  			 		
  			 		$.each(data, function(key, value){ //function to execute for each json object
  			 			/** insert buttons into #buttoncontainer and trigger refresh  */
- 			 			$('#buttoncontainer').append("<div class='grid_1' ><button type='submit' data-theme='a' data-icon='plus' data-iconpos='top' class='itembutton' id='"+value.pk+"'> "+value.fields.name+"\t"+value.fields.price+"/-"+"</button></div>").trigger('create');
+ 			 			$('#buttoncontainer').append("<div class='grid_1' ><button type='submit' data-theme='a' data-icon='plus' data-iconpos='top' class='itembutton' id='"+value.pk+"'> "+value.fields.name+" "+value.fields.price+"/-</button></div>").trigger('create');
  			 		});
  			 		/** now that the content is injected bind a tap event for each itembutton to put on div#checklist */
- 			 		nextscript(); 			 		
+ 			 		nextscript(); 			 
+		
  			 	
  			 	},
  			 	/* error callback */
@@ -79,11 +83,70 @@
  			 	}
  			 }); // end of aax request
 
+
+
+				/*Event for removing checked items*/
+			$('.removeitem').live("tap", function(){
+				id = $(this).attr('id').split('-').pop();
+				removeItem(id);
+				id=$(this).attr('id').split('-').pop();
+				_itembutton = $('#'+id);
+				removeMark(_itembutton);
+			});//end of remove event
+
+				/*Event for increasing count*/
+			$('.modcount').live("tap", function(){
+				increaseCount($(this).attr('id'));
+			});//end of count event
+
+			/** Event for #Order button **/
+			$('#resetbutton').on('tap', function(event, ui){
+				$.mobile.showPageLoadingMsg();
+				location.reload();
+			});
+
+			/** Event for placing Order #orderbutton */
+			$('#orderbutton').on('tap', function(event, ui){
+				if($('#itemchecklist').children().length>0){ //check if any item is on the kart or nothing
+ 			 		/** Fire an Ajax event to send data to server */	
+ 			 		list=[]; //list object to push itemobjects, useful for json conversion!
+ 			 		$('#itemchecklist').children('li').each(function(){
+ 			 			itemid = parseInt($(this).attr('id').split('-').pop());
+ 			 			itemcount = parseInt($(this).find('.ui-li-count').text());
+ 			 			var itemObj = { id: itemid, count: itemcount }
+ 			 			list.push(itemObj);
+ 			 		});
+ 			 		jsondata = JSON.stringify(list);
+ 			 		$.ajax({
+ 			 		type: "POST",
+	 			 	url: '/postorder/', // point this to json response generator
+					dataType: 'json',
+ 				 	data: jsondata,
+ 				 	success: function(data){
+ 			 		
+	 			 		$.each(data, function(key, value){ //function to execute for each json object
+ 			 			/** insert buttons into #buttoncontainer and trigger refresh  */
+ 				 			$('#buttoncontainer').append("<div class='grid_1' ><button type='submit' data-theme='a' data-icon='plus' data-iconpos='top' class='itembutton' id='"+value.pk+"'> "+value.fields.name+" "+value.fields.price+"/-</button></div>").trigger('create');
+ 				 		}); 			
+ 				 		},
+ 			 	/* error callback */
+ 			 		error: function(error){
+ 			 			alert("failure " + "try again: "+jsondata);
+ 			 			}
+ 			 		
+
+ 			 		}); // end of aax request					
+				}			
+
+			});
+
+			/*** Essential function definitions **/
  			 function nextscript() {
  			 	$('#buttoncontiner').trigger('update');
 				$( ".itembutton" ).on( "tap", function(event, ui) {
 					itemSelectToggle($(this));
 				});// endof tap event processing
+
 
 			}//end of nextscript
 
@@ -96,6 +159,8 @@
 			function itemSelectToggle(_itembutton) {
 					if(_itembutton.attr('data-icon')=='plus') {
 						addItem(_itembutton);
+
+
 					}
 					else { if(_itembutton.attr('data-icon')=='check') {
 							removeMark(_itembutton);
@@ -116,25 +181,10 @@
 		 		/** inject selected buttons into checklist container **/
 			 	/*Call AddItem Now*/
 			 	var itemid=_itembutton.attr('id');
-			 	$('#itemchecklist').append("<li id='remove-"+itemid+"'><a href='#' class='counter' id='count_"+itemid+"'><h3>"+_itembutton.text()+"</h3><p>nos</p><span class='ui-li-count'>1</span></a><a href='#' data-rel='popup' data-position-to='window' data-transition='pop' class='removeitem' id='remove_remove-"+itemid+"'>Remove this...</a></li>").listview('refresh');
-				/*Event for counting*/
-				$('.counter').on("tap", function(event, ui){
-					var count = parseInt($(this).find('span').text(), 10);
-					$(this).find('span').text(++count);
-					$('#itemchecklist').listview('refresh');
-				});
-
-
-				/*Event for removing*/
-				$('.removeitem').on("tap", function(event, ui){
-					id = $(this).attr('id').split('-').pop();
-					removeItem(id);
-					id=$(this).attr('id').split('-').pop();
-					_itembutton = $('#'+id);
-					removeMark(_itembutton);
-
-				});
+			 	$('#itemchecklist').append("<li id='remove-"+itemid+"'><a href='#' class='modcount' id='count_"+itemid+"'><h3>"+_itembutton.text()+"</h3><p>nos</p><span class='ui-li-count'>1</span></a><a href='#' data-rel='popup' data-position-to='window' data-transition='pop' class='removeitem' id='remove_remove-"+itemid+"'>Remove this...</a></li>").listview('refresh');
+				
 			}
+
 
 			function removeMark(_itembutton) {
 	 	 		_itembutton.attr('data-icon','plus');   //change plus icon to tick icon
@@ -144,6 +194,10 @@
 		 		_itembutton.parent().removeClass('ui-btn-up-e').addClass('ui-btn-up-a');  ;// add remove responsioble classes for theming
 		 		_itembutton.parent().removeClass('ui-btn-hover-e').addClass('ui-btn-hover-a'); // same here too
 		 		_itembutton.button('refresh');
+			}
+
+			function increaseCount(itemid) {
+				$('#'+itemid).find('span').text(parseInt($('#'+itemid).find('span').text())+1);				
 			}
 
 
