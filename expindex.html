@@ -118,17 +118,13 @@
  			 		});
  			 		jsondata = JSON.stringify(list);
  			 		$.ajax({
- 			 		type: "POST",
+ 			 		type: 'POST',
 	 			 	url: '/postorder/', // point this to json response generator
+	 			 	contentType: 'application/json; charset=utf-8',
 					dataType: 'json',
  				 	data: jsondata,
- 				 	success: function(data){
- 			 		
-	 			 		$.each(data, function(key, value){ //function to execute for each json object
- 			 			/** insert buttons into #buttoncontainer and trigger refresh  */
- 				 			$('#buttoncontainer').append("<div class='grid_1' ><button type='submit' data-theme='a' data-icon='plus' data-iconpos='top' class='itembutton' id='"+value.pk+"'> "+value.fields.name+" "+value.fields.price+"/-</button></div>").trigger('create');
- 				 		}); 			
- 				 		},
+ 				 	success: function(responsedata){
+ 	 				 		},
  			 	/* error callback */
  			 		error: function(error){
  			 			alert("failure " + "try again: "+jsondata);
